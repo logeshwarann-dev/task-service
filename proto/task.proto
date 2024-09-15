@@ -18,6 +18,7 @@ message AddTaskRequest {
 
 message AddTaskResponse {
   bool success = 1;
+  string task_id = 2; 
 }
 
 message UpdateTaskRequest {

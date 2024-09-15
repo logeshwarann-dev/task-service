@@ -35,7 +35,10 @@ func (s *TaskServiceServer) AddTask(ctx context.Context, req *proto.AddTaskReque
 	if err != nil {
 		return nil, fmt.Errorf("failed to add task: %v", err)
 	}
-	return &proto.AddTaskResponse{Success: true}, nil
+	return &proto.AddTaskResponse{
+		Success: true,
+		TaskId:  fmt.Sprintf("%d", task.ID), // Return the TaskID
+	}, nil
 }
 
 func main() {
