@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package task;
+
+option go_package = "./;task";
+
+service TaskService {
+  rpc AddTask (AddTaskRequest) returns (AddTaskResponse);
+  rpc UpdateTask (UpdateTaskRequest) returns (UpdateTaskResponse);
+  rpc DeleteTask (DeleteTaskRequest) returns (DeleteTaskResponse);
+  rpc ListTasks (ListTasksRequest) returns (ListTasksResponse);
+}
+
+message AddTaskRequest {
+  string user_id = 1;
+  string title = 2;
+}
+
+message AddTaskResponse {
+  bool success = 1;
+}
+
+message UpdateTaskRequest {
+  string task_id = 1;
+  string title = 2;
+  bool done = 3;
+}
+
+message UpdateTaskResponse {
+  bool success = 1;
+}
+
+message DeleteTaskRequest {
+  string task_id = 1;
+}
+
+message DeleteTaskResponse {
+  bool success = 1;
+}
+
+message ListTasksRequest {
+  string user_id = 1;
+}
+
+message Task {
+  string task_id = 1;
+  string title = 2;
+  bool done = 3;
+}
+
+message ListTasksResponse {
+  repeated Task tasks = 1;
+}
